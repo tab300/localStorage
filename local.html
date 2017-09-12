@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Storage Object Example</title>
+	</head>
+	<body>
+
+		<p id="sample_paragraph">This is the text from the paragraph.</p>
+
+
+		<script type="text/javascript">
+		   /*
+			 		SUMMARY----------
+					This program creates two records in the localStorage as the window loads.
+					First, it checks if the storage already has a record with the key "sampleText",
+					if not, it creates it	and sets the value. Then it alerts a message about the creation.
+					However, if there is already a key called "sampleText", it gets removed from the storage.
+					An alert message comes up saying that it has been removed.Followed by another indicating
+					how many records are currently in the storage.
+					-----------------------------------------------------------------------------------------
+			 */
+		   // Conditional to check if the sample_text has not already been stored
+			 if(localStorage.getItem("sampleText") === null){
+				 // Set the value of sampleText
+				 localStorage.setItem("sampleText", sample_paragraph.innerHTML);
+				 // Alert the message if the new values are set.
+				 alert("You have now set the value of 'sampleText' to" +
+				        " '" + localStorage.getItem("sampleText") +
+								" '.");
+				// If the sampleText is already taken, it removes it from the record
+			 }else if(localStorage.getItem("sampleText") !== null){
+				 localStorage.removeItem("sampleText");
+				 // Alerts that the record has been removed
+				 alert("Data for 'sampleText' has been removed.");
+			 }
+
+       // Alerts how many pieces of data exists in the storage
+			 // NOTICE the "localStorage.length". That is the
+			 // Storage object's property call that counts how many data items are stored
+			 // The values should alternate between 0 and 1 as data are being added and removed alternatively
+			 alert("The length (size/count) of your data in storage is now: " + localStorage.length + ".")
+		</script>
+	</body>
+</html>
